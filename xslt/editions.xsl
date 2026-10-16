@@ -43,9 +43,10 @@
                 </xsl:call-template>
                 <!-- Provide the names of the authors/editors of the current unit, ideally fetched from the data via xslt or hard coded as below -->
                 <meta name="citation_author" content="Foo, Bar"/>
-                <meta name="citation_author" content="Bar, Foo"/> 
+                <meta name="citation_author" content="Bar, Foo"/>
+                <link rel="stylesheet" href="css/editions-toc.css" type="text/css"></link>
             </head>
-            <body class="d-flex flex-column h-100">
+            <body class="d-flex flex-column h-100" data-bs-spy="scroll" data-bs-target="#toc">
                 <xsl:call-template name="nav_bar"/>
                 <main id="main" tabindex="-1" class="flex-shrink-0 flex-grow-1">
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="ps-5 p-3">
@@ -66,7 +67,7 @@
                         </ol>
                     </nav>
                     <div class="container">
-                        <div class="row">
+                        <div class="row" id="siteHead">
                             <div class="col-md-2 col-lg-2 col-sm-12 text-start">
                                 <xsl:if test="ends-with($prev,'.html')">
                                     <a>
@@ -104,10 +105,73 @@
                                 </xsl:if>
                             </div>
                         </div>
-                        <div id="col-info">
-                            <h2>About the colophon</h2>
-                            <div id="basic-info">
-                                
+                        
+                        <div class="row" id="siteBody">
+                            <div class="col-md-2">
+                                <details class="d-md-none mb-3 toc-details">
+                                    <summary>Table of Contents</summary>
+                                    <nav class="js-toc sticky-top"
+                                        title="page navigation">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#about">About</a>
+                                            </li>
+                                            
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#witnesses">Witnesses</a>
+                                                
+                                                <ul class="nav flex-column ms-3">
+                                                    <xsl:for-each select="//tei:listWit[@xml:id='witnesses']/tei:witness">
+                                                        <xsl:variable name="witnessId" select="replace(@corresp, '#', '')"/>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#{$witnessId}">
+                                                                <xsl:value-of select="./tei:ref/text()"/>
+                                                            </a>
+                                                        </li>
+                                                    </xsl:for-each>
+                                                </ul>
+                                            </li>
+                                            
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#commentary">Commentary</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </details>
+                                <nav
+                                    id="toc"
+                                    class="js-toc sticky-top d-none d-md-block"
+                                    style="max-height: calc(100vh - 2rem); overflow-y: auto;"
+                                    aria-label="Page navigation"
+                                    >
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#about">About</a>
+                                        </li>
+                                        
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#witnesses">Witnesses</a>
+                                            
+                                            <ul class="nav flex-column ms-3">
+                                            <xsl:for-each select="//tei:listWit[@xml:id='witnesses']/tei:witness">
+                                                <xsl:variable name="witnessId" select="replace(@corresp, '#', '')"/>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="#{$witnessId}">
+                                                            <xsl:value-of select="./tei:ref/text()"/>
+                                                        </a>
+                                                    </li>
+                                            </xsl:for-each>
+                                            </ul>
+                                        </li>
+                                        
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#commentary">Commentary</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="col-md-10">
+                                <h2 id="about">About the colophon</h2>
                                 <dl>
                                     <dt>date</dt>
                                     <dd><xsl:value-of select="//tei:sourceDesc/tei:listBibl[1]/tei:bibl/tei:date"/></dd>
@@ -126,38 +190,25 @@
                                     
                                     <dt>source</dt>
                                     <dd><xsl:apply-templates select="//tei:sourceDesc/tei:listBibl[1]/tei:bibl/tei:note[@type='source']"/></dd>
-                                    
                                 </dl>
-
-                            </div>
-                        </div>
-                        <div id="witness-info">
-                            <h2>Witnesses</h2>
-                            <xsl:for-each select="//tei:listWit[@xml:id='witnesses']/tei:witness">
-                                <h3><xsl:value-of select="./tei:ref"/></h3>
-                                <dl>
-                                    <dt>locus</dt>
-                                    <dd><xsl:apply-templates select="./tei:locus"/></dd>
+                                <h2 id="witnesses">Witnesses</h2>
+                                <xsl:for-each select="//tei:listWit[@xml:id='witnesses']/tei:witness">
+                                    <xsl:variable name="witnessId" select="replace(@corresp, '#', '')"/>
+                                    <h3 id="{$witnessId}" class="pt-5"><xsl:value-of select="./tei:ref"/></h3>
+                                    <dl>
+                                        <dt>locus</dt>
+                                        <dd><xsl:apply-templates select="./tei:locus"/></dd>
+                                        
+                                        <dt>transmissionStatus</dt>
+                                        <dd><xsl:apply-templates select="./tei:note[@type='transmissionStatus']"/></dd>
+                                        
+                                        <dt>dating</dt>
+                                        <dd><xsl:apply-templates select="./tei:note[@type='dating']"/></dd>
+                                    </dl>
                                     
-                                    <dt>transmissionStatus</dt>
-                                    <dd><xsl:apply-templates select="./tei:note[@type='transmissionStatus']"/></dd>
-                                    <dt>dating</dt>
-                                    <dd><xsl:apply-templates select="./tei:note[@type='dating']"/></dd>
-                                </dl>
-                            </xsl:for-each>
-                        </div>
-                        
-                        
-                        
-                        
-                        
-                        <div>
-                            <xsl:for-each select=".//tei:div[@type='witness']">
-                                <div>
-                                    <h3><xsl:value-of select="./tei:head//text()"/></h3>
-                                    <p class="lead"><xsl:apply-templates select="./tei:ab[@type='miseEnPage']"/></p>
-                                    <xsl:for-each select=".//tei:div[@type='folio']">
-                                        <div>
+                                    <h4>Transcription</h4>
+                                    <xsl:for-each select="//tei:div[@xml:id=$witnessId]">
+                                        <xsl:for-each select=".//tei:div[@type='folio']">
                                             <div class="row">
                                                 <div class="col">
                                                     <xsl:apply-templates select="./tei:ab[@type='transcription']"/>
@@ -166,15 +217,15 @@
                                                     <xsl:apply-templates select="./tei:ab[@type='translation']"/>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </xsl:for-each>
                                     </xsl:for-each>
-                                </div>
-                            </xsl:for-each>
-                        </div>
-                        
-                        
-                        
-
+                                    <hr />
+                                </xsl:for-each>
+                                
+                                <h2 id="commentary">Commetary</h2>
+                                <div><xsl:apply-templates select="//tei:div[@type='commentary']"></xsl:apply-templates></div>
+                            </div>
+                         </div>
                         <div class="text-center p-4">
                             <xsl:call-template name="blockquote">
                                 <xsl:with-param name="pageId" select="$link"/>
@@ -182,14 +233,9 @@
                         </div>
 
                     </div>
-                    <xsl:for-each select="//tei:back">
-                        <div class="tei-back">
-                            <xsl:apply-templates/>
-                        </div>
-                    </xsl:for-each>
+                    
                 </main>
                 <xsl:call-template name="html_footer"/>
-                <script src="vendor/openseadragon-bin-4.1.1/openseadragon.min.js"/>
             </body>
         </html>
     </xsl:template>

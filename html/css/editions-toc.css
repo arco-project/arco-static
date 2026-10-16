@@ -1,0 +1,26 @@
+#toc .nav-link {
+    padding: 0.25rem 0.75rem;
+    color: var(--bs-secondary-color);
+    border-left: 2px solid transparent;
+}
+
+#toc .nav-link:hover {
+    color: var(--bs-emphasis-color);
+}
+
+#toc > ul > .nav-item > .nav-link {
+    font-weight: 500;
+}
+
+#toc ul ul {
+    border-left: 1px solid var(--bs-border-color);
+}
+
+#toc ul ul .nav-link {
+    font-size: 0.925rem;
+}
+
+#toc .nav-link.active {
+    color: var(--bs-primary);
+    border-left-color: var(--bs-primary);
+}
