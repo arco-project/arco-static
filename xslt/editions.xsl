@@ -119,7 +119,6 @@
                                             
                                             <li class="nav-item">
                                                 <a class="nav-link" href="#witnesses">Witnesses</a>
-                                                
                                                 <ul class="nav flex-column ms-3">
                                                     <xsl:for-each select="//tei:listWit[@xml:id='witnesses']/tei:witness">
                                                         <xsl:variable name="witnessId" select="replace(@corresp, '#', '')"/>
@@ -131,7 +130,19 @@
                                                     </xsl:for-each>
                                                 </ul>
                                             </li>
-                                            
+                                            <xsl:if test="count(//tei:witness) gt 1">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#synoptic-view">Synoptic views</a>
+                                                    <ul class="nav flex-column ms-3">
+                                                        <li class="nav-item" >
+                                                            <a class="nav-link" href="#synoptic-view-original">original</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#synoptic-view-translated">translated</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </xsl:if>x
                                             <li class="nav-item">
                                                 <a class="nav-link" href="#commentary">Commentary</a>
                                             </li>
@@ -151,7 +162,6 @@
                                         
                                         <li class="nav-item">
                                             <a class="nav-link" href="#witnesses">Witnesses</a>
-                                            
                                             <ul class="nav flex-column ms-3">
                                             <xsl:for-each select="//tei:listWit[@xml:id='witnesses']/tei:witness">
                                                 <xsl:variable name="witnessId" select="replace(@corresp, '#', '')"/>
@@ -163,10 +173,24 @@
                                             </xsl:for-each>
                                             </ul>
                                         </li>
+                                        <xsl:if test="count(//tei:witness) gt 1">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#synoptic-view">Synoptic views</a>
+                                                <ul class="nav flex-column ms-3">
+                                                    <li class="nav-item" >
+                                                        <a class="nav-link" href="#synoptic-view-original">original</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="#synoptic-view-translated">translated</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </xsl:if>
                                         
                                         <li class="nav-item">
                                             <a class="nav-link" href="#commentary">Commentary</a>
                                         </li>
+                                        
                                     </ul>
                                 </nav>
                             </div>
@@ -221,6 +245,26 @@
                                     </xsl:for-each>
                                     <hr />
                                 </xsl:for-each>
+                                <xsl:if test="count(//tei:witness) gt 1">
+                                    <h2 id="synoptic-view">synoptic View</h2>
+                                    
+                                    <h3 id="synoptic-view-original">Original</h3>
+                                    <div class="row">
+                                        <xsl:for-each select="//tei:div[@type='witness']">
+                                            <div class="col">
+                                                <xsl:apply-templates select=".//tei:ab[@type='transcription']"/>
+                                            </div>
+                                        </xsl:for-each>
+                                    </div>
+                                    <h3 id="synoptic-view-translated">Translated</h3>
+                                    <div class="row">
+                                        <xsl:for-each select="//tei:div[@type='witness']">
+                                            <div class="col">
+                                                <xsl:apply-templates select=".//tei:ab[@type='translation']"/>
+                                            </div>
+                                        </xsl:for-each>
+                                    </div>
+                                </xsl:if>
                                 
                                 <h2 id="commentary">Commetary</h2>
                                 <div><xsl:apply-templates select="//tei:div[@type='commentary']"></xsl:apply-templates></div>
