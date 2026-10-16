@@ -1,3 +1,9 @@
+
+dd {
+    padding-left: 2em;
+}
+
+
 /* needed for interactive map in listplace.xsl */
 div#map {
     height: 50vh;

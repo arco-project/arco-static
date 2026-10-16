@@ -34,7 +34,7 @@
         <br/>
     </xsl:template>
 
-    <xsl:template match="tei:note">
+    <xsl:template match="tei:note[@type='footnote']">
         <xsl:element name="a">
             <xsl:attribute name="name">
                 <xsl:text>fna_</xsl:text>

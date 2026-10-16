@@ -105,10 +105,52 @@
                             </div>
                         </div>
                         <div id="col-info">
-                            <h2>
-                                <xsl:value-of select="//tei:text/tei:body/tei:div/tei:head//text()"/>
-                            </h2>
+                            <h2>About the colophon</h2>
+                            <div id="basic-info">
+                                
+                                <dl>
+                                    <dt>date</dt>
+                                    <dd><xsl:value-of select="//tei:sourceDesc/tei:listBibl[1]/tei:bibl/tei:date"/></dd>
+                                    
+                                    <dt>place</dt>
+                                    <dd><xsl:value-of select="//tei:sourceDesc/tei:listBibl[1]/tei:bibl/tei:placeName"/></dd>
+                                    
+                                    <dt>identification</dt>
+                                    <dd><xsl:apply-templates select="//tei:sourceDesc/tei:listBibl[1]/tei:bibl/tei:note[@type='identification']"/></dd>
+                                    
+                                    <dt>transmission</dt>
+                                    <dd><xsl:apply-templates select="//tei:sourceDesc/tei:listBibl[1]/tei:bibl/tei:note[@type='transmission']"/></dd>
+                                    
+                                    <dt>uncertainty</dt>
+                                    <dd><xsl:apply-templates select="//tei:sourceDesc/tei:listBibl[1]/tei:bibl/tei:note[@type='uncertainty']"/></dd>
+                                    
+                                    <dt>source</dt>
+                                    <dd><xsl:apply-templates select="//tei:sourceDesc/tei:listBibl[1]/tei:bibl/tei:note[@type='source']"/></dd>
+                                    
+                                </dl>
+
+                            </div>
                         </div>
+                        <div id="witness-info">
+                            <h2>Witnesses</h2>
+                            <xsl:for-each select="//tei:listWit[@xml:id='witnesses']/tei:witness">
+                                <h3><xsl:value-of select="./tei:ref"/></h3>
+                                <dl>
+                                    <dt>locus</dt>
+                                    <dd><xsl:apply-templates select="./tei:locus"/></dd>
+                                    
+                                    <dt>transmissionStatus</dt>
+                                    <dd><xsl:apply-templates select="./tei:note[@type='transmissionStatus']"/></dd>
+                                    <dt>dating</dt>
+                                    <dd><xsl:apply-templates select="./tei:note[@type='dating']"/></dd>
+                                </dl>
+                            </xsl:for-each>
+                        </div>
+                        
+                        
+                        
+                        
+                        
                         <div>
                             <xsl:for-each select=".//tei:div[@type='witness']">
                                 <div>
