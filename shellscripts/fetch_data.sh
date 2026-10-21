@@ -17,3 +17,5 @@ echo "adding xml:id and next/prev attributes into root element of tei-docs"
 uv run add-attributes -g "./data/editions/*.xml" -b "https://arco.acdh.oeaw.ac.at"
 uv run add-attributes -g "./data/indices/*.xml" -b "https://arco.acdh.oeaw.ac.at"
 uv run add-attributes -g "./data/meta/*.xml" -b "https://arco.acdh.oeaw.ac.at"
+
+uv run pyscripts/denormalize_formula.py
