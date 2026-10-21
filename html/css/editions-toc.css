@@ -17,7 +17,11 @@
 }
 
 #toc ul ul .nav-link {
-    font-size: 0.925rem;
+    font-size: 0.825rem;
+}
+
+#toc ul ul ul .nav-link {
+    font-size: 0.725rem;
 }
 
 #toc .nav-link.active {

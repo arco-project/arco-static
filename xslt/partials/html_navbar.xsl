@@ -4,7 +4,7 @@
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="#all" version="2.0">
     <xsl:template name="nav_bar">
-        <a class="visually-hidden-focusable" href="#main">Zum Inhalt springen</a>
+        <a class="visually-hidden-focusable" href="#main">Jump to content</a>
         <header>
             <nav aria-label="Primary" class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
@@ -17,35 +17,35 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projekt</a>
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Project</a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item" href="about.html">Über das Projekt</a>
+                                        <a class="dropdown-item" href="about.html">About the Project</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="imprint.html">Impressum</a>
+                                        <a class="dropdown-item" href="imprint.html">imprint</a>
                                     </li>
                                 </ul>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="toc.html">Editionseinheiten</a>
+                                <a class="nav-link" href="toc.html">Colophons</a>
                             </li>
 
                             <li class="nav-item dropdown disabled">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Register</a>
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Indices</a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item" href="listperson.html">Personen</a>
+                                        <a class="dropdown-item" href="listperson.html">Persons</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="listplace.html">Orte</a>
+                                        <a class="dropdown-item" href="listplace.html">Places</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="listorg.html">Organisationen</a>
+                                        <a class="dropdown-item" href="listformula.html">Formulas</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="listbibl.html">Werke</a>
+                                        <a class="dropdown-item" href="listbibl.html">Works</a>
                                     </li>
                                 </ul>
                             </li>
@@ -53,10 +53,10 @@
                                 <a title="API" class="nav-link" href="api.xml">API</a>
                             </li>
                             <li class="nav-item">
-                                <a title="Suche" class="nav-link" href="search.html">Suche</a>
+                                <a title="Search" class="nav-link" href="search.html">Search</a>
                             </li>
                             <li class="nav-item">
-                                <a title="Suche" class="nav-link" href="noske-search.html">Noske-Suche</a>
+                                <a title="Search" class="nav-link" href="noske-search.html">Noske-Search</a>
                             </li>
                         </ul>
                     </div>

@@ -24,10 +24,13 @@ data = {}
 
 for x in files:
     doc = TeiReader(x)
+    root = doc.any_xpath("//tei:TEI")[0]
+    root.attrib.pop("{http://www.w3.org/XML/1998/namespace}base", None)
     witt_list = {}
     file_id = os.path.split(x)[-1]
     for y in doc.any_xpath(".//tei:listWit[@xml:id='witnesses']/tei:witness"):
         xml_id = get_xmlid(y)
+
         witt_list[xml_id] = {
             "xml_id": xml_id,
             "ms": {

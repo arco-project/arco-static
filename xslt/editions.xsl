@@ -283,4 +283,8 @@
             </body>
         </html>
     </xsl:template>
+    
+    <xsl:template match="tei:seg[@xml:id]">
+        <div id="{@xml:id}"><xsl:apply-templates/></div>
+    </xsl:template>
 </xsl:stylesheet>
