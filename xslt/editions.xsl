@@ -218,7 +218,14 @@
                                 <h2 id="witnesses">Witnesses</h2>
                                 <xsl:for-each select="//tei:listWit[@xml:id='witnesses']/tei:witness">
                                     <xsl:variable name="witnessId" select="replace(@corresp, '#', '')"/>
-                                    <h3 id="{$witnessId}" class="pt-5"><xsl:value-of select="./tei:ref"/></h3>
+                                    <xsl:variable name="msId">
+                                        <xsl:value-of select="tokenize(data(./tei:ref/@target), '#')[last()]||'.html'"/>
+                                    </xsl:variable>
+                                    <h3 id="{$witnessId}" class="pt-5">
+                                        <a href="{$msId}">
+                                            <xsl:value-of select="./tei:ref"/>
+                                        </a>
+                                    </h3>
                                     <dl>
                                         <dt>locus</dt>
                                         <dd><xsl:apply-templates select="./tei:locus"/></dd>
