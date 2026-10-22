@@ -42,6 +42,9 @@
                                         <a class="dropdown-item" href="listformula.html">Formulas</a>
                                     </li>
                                     <li>
+                                        <a class="dropdown-item" href="listbibl.html">Bibliography</a>
+                                    </li>
+                                    <li>
                                         <a class="dropdown-item" href="listperson.html">Persons</a>
                                     </li>
                                     <li>

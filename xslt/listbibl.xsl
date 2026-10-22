@@ -18,7 +18,7 @@
 
     <xsl:template match="/">
         <xsl:variable name="doc_title">
-            <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
+            <xsl:value-of select=".//tei:titleStmt/tei:title[@level='a']/text()"/>
         </xsl:variable>
         <xsl:variable name="link" select="'listbibl.html'"/>
         <html class="h-100" lang="{$default_lang}">
@@ -58,28 +58,41 @@
                         <table id="myTable" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">Titel</th>
-                                    <th scope="col">Autor</th>
-                                    <th scope="col">Datum</th>
+                                    <th scope="col">Author(s)</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Year</th>
+                                    <th scope="col" data-dt-visible="false">Publisher</th>
+                                    <th scope="col" data-dt-visible="false">Place</th>
+                                    <th scope="col" data-dt-visible="false">Type</th>
                                     <th scope="col" data-dt-visible="false">ID</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <xsl:for-each select=".//tei:bibl[@xml:id]">
+                                <xsl:for-each select=".//tei:biblStruct[@xml:id]">
                                     <xsl:variable name="id">
                                         <xsl:value-of select="data(@xml:id)"/>
                                     </xsl:variable>
                                     <tr>
                                         <td>
                                             <a href="{$id||'.html'}">
-                                                <xsl:value-of select="./tei:title[1]"/>
+                                                <xsl:value-of select="string-join(.//tei:author//text(), '/')"/>
+                                                
                                             </a>
                                         </td>
                                         <td>
-                                            <xsl:value-of select=".//tei:author[1]"/>
+                                            <xsl:value-of select=".//tei:title[1]"/>
                                         </td>
                                         <td>
                                             <xsl:value-of select=".//tei:date[1]/text()"/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select=".//tei:publisher"/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select=".//tei:pubPlace"/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="@type"/>
                                         </td>
                                         <td>
                                             <xsl:value-of select="$id"/>
@@ -100,9 +113,9 @@
                 <script src="js/datatables_custom/datatables_custom.js"></script>
             </body>
         </html>
-        <xsl:for-each select=".//tei:bibl[@xml:id]">
+        <xsl:for-each select=".//tei:biblStruct[@xml:id]">
             <xsl:variable name="filename" select="concat(./@xml:id, '.html')"/>
-            <xsl:variable name="name" select="normalize-space(string-join(./tei:title[1]//text()))"></xsl:variable>
+            <xsl:variable name="name" select="normalize-space(string-join(.//tei:title[1]//text()))"></xsl:variable>
             <xsl:result-document href="{$filename}">
                 <html class="h-100" lang="{$default_lang}">
                     <head>

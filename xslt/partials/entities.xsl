@@ -4,9 +4,9 @@
     version="2.0" exclude-result-prefixes="xsl tei xs">
     <xsl:template match="tei:bibl" name="bibl_detail">
         <dl>
-            <xsl:if test="./tei:author">
-                <dt>Autor*innen</dt>
-                <xsl:for-each select="./tei:author">
+            <xsl:if test=".//tei:author">
+                <dt>Author(s)</dt>
+                <xsl:for-each select=".//tei:author">
                     <dd>
                         <xsl:choose>
                             <xsl:when test="@key">
@@ -22,15 +22,15 @@
                     </dd>
                 </xsl:for-each>
             </xsl:if>
-            <xsl:if test="./tei:date">
-                <dt>Datum</dt>
+            <xsl:if test=".//tei:date">
+                <dt>Year</dt>
                 <dd>
-                    <xsl:value-of select="./tei:date"/>
+                    <xsl:value-of select=".//tei:date"/>
                 </dd>
             </xsl:if>
-            <xsl:if test="./tei:idno">
+            <xsl:if test=".//tei:idno">
                 <dt>Identifiers</dt>
-                <xsl:for-each select="./tei:idno">
+                <xsl:for-each select=".//tei:idno">
                     <dd>
                         <xsl:choose>
                             <xsl:when test="starts-with(./text(), 'http')">
