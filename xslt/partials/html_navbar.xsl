@@ -36,14 +36,18 @@
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Indices</a>
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <a class="dropdown-item" href="listmanuscript.html">Manuscripts</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="listformula.html">Formulas</a>
+                                    </li>
+                                    <li>
                                         <a class="dropdown-item" href="listperson.html">Persons</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="listplace.html">Places</a>
                                     </li>
-                                    <li>
-                                        <a class="dropdown-item" href="listformula.html">Formulas</a>
-                                    </li>
+                                    
                                     <li>
                                         <a class="dropdown-item" href="listbibl.html">Works</a>
                                     </li>
