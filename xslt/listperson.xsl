@@ -18,7 +18,7 @@
 
     <xsl:template match="/">
         <xsl:variable name="doc_title">
-            <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
+            <xsl:value-of select=".//tei:titleStmt/tei:title[@level='a']/text()"/>
         </xsl:variable>
         <xsl:variable name="link" select="'listperson.html'"/>
         <html class="h-100" lang="{$default_lang}">
@@ -58,8 +58,10 @@
                         <table id="myTable" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">Nachname</th>
-                                    <th scope="col" data-dt-searchlist="true">Vorname</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Alt names</th>
+                                    <th scope="col">occupation</th>
+                                    <th scope="col" data-dt-searchlist="true">sex</th>
                                     <th scope="col" data-dt-visible="false">ID</th>
                                 </tr>
                             </thead>
@@ -71,16 +73,17 @@
                                     <tr>
                                         <td>
                                             <a href="{$id||'.html'}">
-                                                <xsl:choose>
-                                                    <xsl:when test=".//tei:surname[1]/text()">
-                                                        <xsl:value-of select=".//tei:surname[1]/text()"/>
-                                                    </xsl:when>
-                                                    <xsl:otherwise>unbekannt</xsl:otherwise>
-                                                </xsl:choose>
+                                                <xsl:value-of select="./tei:persName[@type='preferred']"/>
                                             </a>                                            
                                         </td>
                                         <td>
-                                            <xsl:value-of select=".//tei:forename[1]/text()"/>
+                                            <xsl:value-of select="./tei:persName[@type='variant']"/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="./tei:occupation"/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="./tei:sex"/>
                                         </td>
                                         <td>
                                             <xsl:value-of select="$id"/>
