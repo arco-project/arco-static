@@ -55,8 +55,20 @@
                     </nav>
                     <div class="container">                        
                         <h1><xsl:value-of select="$doc_title"/></h1>
-                        <div id="witness-selection"></div>
-                        <div id="view-container" class="row g-3"></div>
+                        <details class="border rounded bg-light p-3 mb-4">
+                            <summary class="fw-semibold">How to use this page</summary>
+                            <div class="mt-3">
+                                <p>The synoptic view lets you read and compare several colophon witnesses side by side, in transcription and in translation.</p>
+                                <ol class="mb-2">
+                                    <li>Open a colophon in the list below to see its witnesses (the number shows how many there are).</li>
+                                    <li>Click <em>Transcript</em> and/or <em>Translation</em> for any witness to add it as a column. Texts from different colophons can be combined.</li>
+                                    <li>Hover over a highlighted button or over a text to see which one belongs to it. Click the button again to remove the text.</li>
+                                    <li>The address in your browser updates with every change, so you can bookmark or share the current selection.</li>
+                                </ol>
+                            </div>
+                        </details>
+                        <div id="witness-selection" class="mb-4"></div>
+                        <div id="view-container" class="row g-3 pb-4"></div>
                         
                         <div class="text-center p-4">
                             <xsl:call-template name="blockquote">
