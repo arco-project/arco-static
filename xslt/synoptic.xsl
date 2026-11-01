@@ -35,6 +35,7 @@
                 </xsl:call-template>
                 <!-- add the name of the author of the current article -->
                 <meta name="citation_author" content="Foo, Bar"/> 
+                
             </head>
             
             <body class="d-flex flex-column h-100">
@@ -54,10 +55,8 @@
                     </nav>
                     <div class="container">                        
                         <h1><xsl:value-of select="$doc_title"/></h1>
-                        <label for="witness-select" class="form-label" multiple="1">Select manuscript</label>
-                        <select class="form-select" id="witness-select" name="witness">
-                            <option value="">Loading ...</option>
-                        </select>
+                        <div id="witness-selection"></div>
+                        <div id="view-container" class="row g-3"></div>
                         
                         <div class="text-center p-4">
                             <xsl:call-template name="blockquote">
