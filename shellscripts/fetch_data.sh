@@ -19,3 +19,4 @@ uv run add-attributes -g "./data/indices/*.xml" -b "https://arco.acdh.oeaw.ac.at
 uv run add-attributes -g "./data/meta/*.xml" -b "https://arco.acdh.oeaw.ac.at"
 
 uv run pyscripts/denormalize_formula.py
+uv run pyscripts/provide_col_syn_view_data.py

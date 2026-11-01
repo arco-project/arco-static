@@ -242,10 +242,10 @@
                                         <xsl:for-each select=".//tei:div[@type='folio']">
                                             <div class="row">
                                                 <div class="col">
-                                                    <xsl:apply-templates select="./tei:ab[@type='transcription']"/>
+                                                    <div id="{'html-transcript-'||$witnessId}"><xsl:apply-templates select="./tei:ab[@type='transcription']"/></div>
                                                 </div>
                                                 <div class="col">
-                                                    <xsl:apply-templates select="./tei:ab[@type='translation']"/>
+                                                    <div id="{'html-translation-'||$witnessId}"><xsl:apply-templates select="./tei:ab[@type='translation']"/></div>
                                                 </div>
                                             </div>
                                         </xsl:for-each>

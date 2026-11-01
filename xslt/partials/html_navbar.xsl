@@ -57,6 +57,9 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
+                                <a title="Synotic Viewer " class="nav-link" href="synoptic.html">Synoptic Viewer</a>
+                            </li>
+                            <li class="nav-item">
                                 <a title="API" class="nav-link" href="api.xml">API</a>
                             </li>
                             <li class="nav-item">

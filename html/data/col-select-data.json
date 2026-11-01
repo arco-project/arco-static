@@ -1,0 +1,34 @@
+[
+    {
+        "id": "col-000001-wit-000001",
+        "ms": "Yerevan, Mesrop Mashtots Institute of Ancient Manuscripts, MS. 288",
+        "title": "Colophon 1 — Yerevan, Mesrop Mashtots Institute of Ancient Manuscripts, MS. 288, fols. 278v–280v",
+        "html_file": "col-000001.html",
+        "transcript_id": "html-transcript-col-000001-wit-000001",
+        "translation_id": "html-translation-col-000001-wit-000001"
+    },
+    {
+        "id": "col-000002-wit-000001",
+        "ms": "Paris, Bibliothèque nationale de France, MS. Arménien 178",
+        "title": "Colophon 2 — Translation of the Martyrdom of Saints Eudoxios, Romylos, Zenon, and Makarios",
+        "html_file": "col-000002.html",
+        "transcript_id": "html-transcript-col-000002-wit-000001",
+        "translation_id": "html-translation-col-000002-wit-000001"
+    },
+    {
+        "id": "col-000002-wit-000002",
+        "ms": "Venice, Mekhitarist monastery of San Lazzaro MS. 17",
+        "title": "Colophon 2 — Translation of the Martyrdom of Saints Eudoxios, Romylos, Zenon, and Makarios",
+        "html_file": "col-000002.html",
+        "transcript_id": "html-transcript-col-000002-wit-000002",
+        "translation_id": "html-translation-col-000002-wit-000002"
+    },
+    {
+        "id": "col-000002-wit-000003",
+        "ms": "Yerevan, Mesrop Mashtots Institute of Ancient Manuscripts, MS. 6196",
+        "title": "Colophon 2 — Translation of the Martyrdom of Saints Eudoxios, Romylos, Zenon, and Makarios",
+        "html_file": "col-000002.html",
+        "transcript_id": "html-transcript-col-000002-wit-000003",
+        "translation_id": "html-translation-col-000002-wit-000003"
+    }
+]
