@@ -67,6 +67,7 @@ async function populateWitnessSelection() {
                     input.dataset.htmlFile = item.html_file;
                     input.dataset.type = type;
                     input.dataset.title = item.title;
+                    input.dataset.ms = item.ms;
 
                     const label = document.createElement("label");
                     label.className = "btn btn-sm btn-outline-primary";
@@ -174,7 +175,8 @@ async function renderSelection() {
         id: input.value,
         htmlFile: input.dataset.htmlFile,
         type: input.dataset.type,
-        title: input.dataset.title
+        title: input.dataset.title,
+        ms: input.dataset.ms
     }));
 
     viewContainer.replaceChildren();
@@ -206,7 +208,7 @@ async function renderSelection() {
         // Add heading
         const heading = document.createElement("h2");
         heading.className = "fs-6 fw-semibold border-bottom pb-2 mb-3";
-        heading.textContent = `${item.title} – ${item.type === "transcript" ? "Transcript" : "Translation"}`;
+        heading.textContent = `${item.ms} – ${item.type === "transcript" ? "Transcript" : "Translation"}`;
 
         panel.appendChild(heading);
         panel.appendChild(content.cloneNode(true));
